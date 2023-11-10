@@ -1,5 +1,5 @@
 const express = require("express");
-
+const Charity = require("../models/charityModel");
 const router = express.Router();
 
 // GET ALL charities
@@ -13,8 +13,18 @@ router.get("/:id", (req, res) => {
 });
 
 // POST single charity
-router.post("/", (req, res) => {
-	res.json({ msg: "POST charity" });
+router.post("/", async (req, res) => {
+	const { name, charityId, email } = req.body;
+	try {
+		const charity = await Charity.create({
+			name,
+			charityId,
+			email,
+		});
+		res.status(200).json(charity);
+	} catch (error) {
+		res.status(400).json({ error: error.message });
+	}
 });
 
 // DELETE single charity
