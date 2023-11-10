@@ -1,31 +1,20 @@
 const express = require("express");
-const Charity = require("../models/charityModel");
+const {
+	createCharity,
+	getCharities,
+	getCharity,
+} = require("../controllers/charityController");
+
 const router = express.Router();
 
 // GET ALL charities
-router.get("/", (req, res) => {
-	res.json({ msg: "GET all charities" });
-});
+router.get("/", getCharities);
 
 // GET single charity
-router.get("/:id", (req, res) => {
-	res.json({ msg: "GET single charity" });
-});
+router.get("/:charityId", getCharity);
 
 // POST single charity
-router.post("/", async (req, res) => {
-	const { name, charityId, email } = req.body;
-	try {
-		const charity = await Charity.create({
-			name,
-			charityId,
-			email,
-		});
-		res.status(200).json(charity);
-	} catch (error) {
-		res.status(400).json({ error: error.message });
-	}
-});
+router.post("/", createCharity);
 
 // DELETE single charity
 router.delete("/:id", (req, res) => {
