@@ -17,4 +17,6 @@ const charitySchema = new Schema(
 	{ timestamps: true },
 );
 
-module.exports = mongoose.model("Charity", charitySchema);
+const db = mongoose.connection.useDb("charities");
+
+module.exports = db.model("CharityUser", charitySchema);
