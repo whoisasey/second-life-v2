@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-
+const bcrypt = require("bcrypt");
+const { isEmail } = require("validator");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
@@ -7,15 +8,25 @@ const userSchema = new Schema(
 		charityId: { type: Number, required: true },
 		email: {
 			type: String,
-			required: true,
+			unique: true,
+			lowercase: true,
+			required: [true, "Please enter an email"],
+			validate: [isEmail, "Please enter a valid email"],
 		},
 		password: {
 			type: String,
-			required: true,
+			required: [true, "Please enter a password"],
 		},
 	},
 	{ timestamps: true },
 );
+
+// fire a function ebfore doc saved to db
+userSchema.pre("save", async function (next) {
+	const salt = await bcrypt.genSalt();
+	this.password = await bcrypt.hash(this.password, salt);
+	next();
+});
 
 const db = mongoose.connection.useDb("charities");
 
