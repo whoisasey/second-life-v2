@@ -1,5 +1,6 @@
 const Charity = require("../models/charityModel");
 const mongoose = require("mongoose");
+
 //  get all charities
 const getCharities = async (req, res) => {
 	const charities = await Charity.find({}).sort({ createdAt: -1 });
@@ -43,11 +44,51 @@ const createCharity = async (req, res) => {
 	}
 };
 // delete charity
+const deleteCharity = async (req, res) => {
+	const { charityId } = req.params;
+
+	// if the _id (Object) is passed, not valid
+	if (mongoose.Types.ObjectId.isValid(charityId)) {
+		return res.status(404).json({ error: "No Charity found" });
+	}
+
+	// find by charityId
+	const charity = await Charity.findOneAndDelete({ charityId: charityId });
+
+	if (!charity) {
+		return res.status(404).json({ error: "No Charity found" });
+	}
+
+	return res.status(200).json(charity);
+};
 
 // update charity
+const updateCharity = async (req, res) => {
+	const { charityId } = req.params;
+
+	// if the _id (Object) is passed, not valid
+	if (mongoose.Types.ObjectId.isValid(charityId)) {
+		return res.status(404).json({ error: "No Charity found" });
+	}
+
+	const charity = await Charity.findOneAndUpdate(
+		{ charityId: charityId },
+		{
+			...req.body,
+		},
+	);
+
+	if (!charity) {
+		return res.status(404).json({ error: "No Charity found" });
+	}
+
+	return res.status(200).json(charity);
+};
 
 module.exports = {
 	createCharity,
 	getCharities,
 	getCharity,
+	deleteCharity,
+	updateCharity,
 };

@@ -3,6 +3,8 @@ const {
 	createCharity,
 	getCharities,
 	getCharity,
+	deleteCharity,
+	updateCharity,
 } = require("../controllers/charityController");
 
 const router = express.Router();
@@ -17,13 +19,9 @@ router.get("/:charityId", getCharity);
 router.post("/", createCharity);
 
 // DELETE single charity
-router.delete("/:id", (req, res) => {
-	res.json({ msg: "DELETE charity" });
-});
+router.delete("/:charityId", deleteCharity);
 
 // UPDATE single charity
-router.patch("/:id", (req, res) => {
-	res.json({ msg: "UPDATE charity" });
-});
+router.patch("/:charityId", updateCharity);
 
 module.exports = router;
