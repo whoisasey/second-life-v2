@@ -1,5 +1,6 @@
 require("dotenv").config({ path: "./config.env" });
 const express = require("express");
+const mongoose = require("mongoose");
 const charityRoutes = require("./routes/charities");
 
 // express app
@@ -15,6 +16,13 @@ app.use((req, res, next) => {
 // routes
 app.use("/api/charities", charityRoutes);
 
-app.listen(process.env.PORT, () => {
-	console.log(`server running on port ${process.env.PORT} 🐙`);
-});
+// connect to DB
+mongoose
+	.connect(process.env.CHARITY_MONGO_URI)
+	.then(() => {
+		// listen for requests
+		app.listen(process.env.PORT, () => {
+			console.log(`server running on port ${process.env.PORT} 🐙`);
+		});
+	})
+	.catch((e) => console.log(e));
