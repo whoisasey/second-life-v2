@@ -19,7 +19,7 @@ app.use("/api/users", userRoutes);
 
 // connect to DB
 mongoose
-	.connect(process.env.CHARITY_MONGO_URI)
+	.connect(process.env.MONGO_URI)
 	.then(() => {
 		// listen for requests
 		app.listen(process.env.PORT, () => {
