@@ -3,8 +3,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieparser = require("cookie-parser");
 const cors = require("cors");
-const charityRoutes = require("./routes/charities");
-const userRoutes = require("./routes/users");
+const charityRoutes = require("../routes/charities");
+const userRoutes = require("../routes/users");
 // express app
 const app = express();
 

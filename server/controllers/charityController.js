@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 //  get all charities
 const getCharities = async (req, res) => {
 	const charities = await Charity.find({}).sort({ createdAt: -1 });
-
+	res.setHeader("Content-Type", "text/html");
+	res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
 	res.status(200).json(charities);
 };
 
