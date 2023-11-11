@@ -1,13 +1,19 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const cookieparser = require("cookie-parser");
+const cors = require("cors");
 const charityRoutes = require("./routes/charities");
 const userRoutes = require("./routes/users");
 // express app
 const app = express();
 
 //middleware
+app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieparser());
+
 app.use((req, res, next) => {
 	console.log(req.path, req.method);
 	next();
