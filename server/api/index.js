@@ -41,4 +41,6 @@ mongoose
 	})
 	.catch((e) => console.log(e));
 
+app.use(express.static("public"));
+
 module.exports = app;
