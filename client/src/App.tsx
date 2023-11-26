@@ -1,15 +1,14 @@
+import { Route, Routes } from "react-router-dom";
 import Charities from "./components/Charities";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Nav from "./components/Nav";
 
 function App() {
 	return (
 		<div className="app">
-			<h1>hello world</h1>
-			<BrowserRouter>
-				<Routes>
-					<Route path="/charities" element={<Charities />} />
-				</Routes>
-			</BrowserRouter>
+			<Nav />
+			<Routes>
+				<Route path="/charities" element={<Charities />} />
+			</Routes>
 		</div>
 	);
 }
