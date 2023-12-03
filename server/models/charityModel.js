@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const charitySchema = new Schema(
 	{
-		charityId: { type: Number, required: true },
+		charityId: { type: String, required: true, unique: true },
 		name: {
 			type: String,
 			required: true,
