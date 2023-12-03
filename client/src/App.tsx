@@ -4,12 +4,14 @@ import Nav from "./components/Nav";
 
 function App() {
 	return (
-		<div className="app">
+		<>
 			<Nav />
-			<Routes>
-				<Route path="/charities" element={<Charities />} />
-			</Routes>
-		</div>
+			<main>
+				<Routes>
+					<Route path="/charities" element={<Charities />} />
+				</Routes>
+			</main>
+		</>
 	);
 }
 
