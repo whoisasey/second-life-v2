@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import CharityCard from "../CharityCard/CharityCard";
 
 type charitiesProps = {
-	charityId: number;
+	charityId: string;
 	name: string;
 	email: string;
 };
@@ -26,9 +26,8 @@ const Charities = () => {
 
 	return (
 		<>
-			Charities
-			{result.map((item) => (
-				<CharityCard {...item} />
+			{result.map((item, i) => (
+				<CharityCard {...item} key={i} />
 			))}
 		</>
 	);
