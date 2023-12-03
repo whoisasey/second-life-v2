@@ -6,8 +6,9 @@ const Nav = () => {
 		<nav className={styled.nav}>
 			<NavLink to="/">Second Life</NavLink>
 
-			<div>
+			<div className={styled.menu}>
 				<NavLink to="/charities">Charities</NavLink>
+				<NavLink to="/charities/submit">Add A Charity</NavLink>
 			</div>
 		</nav>
 	);

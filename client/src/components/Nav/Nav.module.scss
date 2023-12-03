@@ -5,3 +5,9 @@
 	display: flex;
 	justify-content: space-between;
 }
+
+.menu {
+	a {
+		@include mp(0, 0.5, 0, 0);
+	}
+}
