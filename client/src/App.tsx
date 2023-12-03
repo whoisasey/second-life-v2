@@ -1,17 +1,16 @@
 import { Route, Routes } from "react-router-dom";
 import Charities from "./components/Charities/CharitiesPage/Charities";
-import Nav from "./components/Nav/Nav";
+import { Layout } from "./components/Layout/Layout";
 
 function App() {
 	return (
-		<>
-			<Nav />
+		<Layout>
 			<main>
 				<Routes>
 					<Route path="/charities" element={<Charities />} />
 				</Routes>
 			</main>
-		</>
+		</Layout>
 	);
 }
 
