@@ -55,6 +55,17 @@ function App() {
 						{/* </li>
 						<li></li> */}
 					</ul>
+					<em>What makes this site different than other competitors?</em>
+					<p>
+						Second Life is built for the millennial (cliché, I know!) I want to
+						create a space that is well-designed and easy for millennials to
+						navigate and still feel attached to, without the corporate feel.
+					</p>
+					<ul>
+						<p>Second Life is not:</p>
+						<li>A place where donations are made directly on the site</li>
+						<li>Sponsored by any organization</li>
+					</ul>
 				</div>
 			</main>
 		</Layout>
