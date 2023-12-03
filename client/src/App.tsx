@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import Charities from "./components/Charities";
-import Nav from "./components/Nav";
+import Charities from "./components/Charities/CharitiesPage/Charities";
+import Nav from "./components/Nav/Nav";
 
 function App() {
 	return (

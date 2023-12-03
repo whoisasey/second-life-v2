@@ -1,4 +1,6 @@
-nav {
+@import "../../styles/mixins";
+
+.nav {
 	@include mp(1, 1, 0, 0);
 	display: flex;
 	justify-content: space-between;

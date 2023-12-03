@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import CharityCard from "../CharityCard/CharityCard";
 
 type charitiesProps = {
 	charityId: number;
@@ -21,11 +22,16 @@ const Charities = () => {
 			setResult(res);
 		};
 		getApi();
-	}, []);
+	}, [result, api]);
 
-	console.log(result);
-
-	return <div>Charities</div>;
+	return (
+		<>
+			Charities
+			{result.map((item) => (
+				<CharityCard {...item} />
+			))}
+		</>
+	);
 };
 
 export default Charities;
