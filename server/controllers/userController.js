@@ -33,6 +33,12 @@ const createUser = async (req, res) => {
 
 	// add doc to DB
 	try {
+		// if charityId exists, don't add user
+		const id = await User.findOne({ charityId: charityId });
+		if (id) {
+			res.status(200).json({ error: "charity ID exists" });
+		}
+
 		const user = await User.create({
 			email,
 			password,
@@ -59,7 +65,7 @@ const deleteUser = async (req, res) => {
 		return res.status(404).json({ error: "No User found" });
 	}
 
-	return res.status(200).json(user);
+	return res.status(200).json({ message: "User Deleted" });
 };
 
 // update user
