@@ -8,7 +8,7 @@ const Nav = () => {
 
 			<div className={styled.menu}>
 				<NavLink to="/charities">Charities</NavLink>
-				<NavLink to="/charities/submit">Add A Charity</NavLink>
+				<NavLink to="/charities/login">Register as a Charity</NavLink>
 			</div>
 		</nav>
 	);

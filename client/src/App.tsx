@@ -1,7 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import Charities from "./components/Charities/CharitiesPage/Charities";
 import { Layout } from "./components/Layout/Layout";
-import CharityForm from "./components/Charities/CharityForm/CharityForm";
+import LoginOrCreate from "./components/Charities/LoginOrCreate/LoginOrCreate";
+import SignIn from "./components/Charities/SignIn/SignIn";
 import Blurb from "./utils/Blurb";
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Blurb />} />
 					<Route path="/charities" element={<Charities />} />
-					<Route path="/charities/submit" element={<CharityForm />} />
+					<Route path="/charities/login" element={<LoginOrCreate />} />
+					<Route path="/charities/signin" element={<SignIn />} />
 				</Routes>
 			</main>
 		</Layout>
