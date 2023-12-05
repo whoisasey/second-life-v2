@@ -29,7 +29,7 @@ const getUser = async (req, res, next) => {
 
 // create new user
 const createUser = async (req, res) => {
-	const { email, password, charityId } = req.body;
+	const { email, password, charityId, name } = req.body;
 
 	// add doc to DB
 	try {
@@ -41,6 +41,7 @@ const createUser = async (req, res) => {
 
 		const user = await User.create({
 			email,
+			name,
 			password,
 			charityId,
 		});

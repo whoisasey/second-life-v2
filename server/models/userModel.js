@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema(
 	{
 		charityId: { type: String, required: true },
+		name: { type: String, required: true },
 		email: {
 			type: String,
 			unique: true,
