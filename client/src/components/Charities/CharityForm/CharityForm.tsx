@@ -65,7 +65,7 @@ const CharityForm = () => {
 				console.log("charity submitted");
 				setFormData(resJson);
 			} else {
-				console.log("error");
+				console.log("error:", resJson);
 			}
 		} catch (err) {
 			console.log(err);
