@@ -10,7 +10,7 @@ type charitiesProps = {
 const Charities = () => {
 	const [result, setResult] = useState<charitiesProps[]>([]);
 
-	const api = `${import.meta.env.VITE_VERCEL_API}/api/charities`;
+	const api = `${import.meta.env.VITE_VERCEL_API}/api/users`;
 
 	useEffect(() => {
 		const getApi = async () => {
