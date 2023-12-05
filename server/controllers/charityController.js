@@ -45,7 +45,6 @@ const createCharity = async (req, res) => {
 // delete charity
 const deleteCharity = async (req, res) => {
 	const { charityId } = req.params;
-
 	// if the _id (Object) is passed, not valid
 	if (mongoose.Types.ObjectId.isValid(charityId)) {
 		return res.status(404).json({ error: "No Charity found" });
@@ -58,7 +57,7 @@ const deleteCharity = async (req, res) => {
 		return res.status(404).json({ error: "No Charity found" });
 	}
 
-	return res.status(200).json(charity);
+	return res.status(200).json({ message: "Charity Successfully Deleted" });
 };
 
 // update charity
