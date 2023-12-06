@@ -1,8 +1,9 @@
 import { ChangeEvent, FormEvent, useState } from "react";
+// import { useNavigate } from "react-router-dom";
 import { charities } from "../../../utils/charities";
 interface FormData {
 	charityId: string;
-	name: string;
+	name?: string;
 	email: string;
 	password: string;
 }
@@ -21,7 +22,9 @@ const CharityForm = () => {
 		email: "",
 		password: "",
 	});
-	const [charityName, setCharityName] = useState<string>("");
+	const [charityName, setCharityName] = useState<string | undefined>("");
+
+	// const navigate = useNavigate()
 
 	const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -33,12 +36,12 @@ const CharityForm = () => {
 		const { value } = e.target;
 
 		const getName = charities.find((ch) => ch.id === value);
-		setCharityName(getName.name);
+		setCharityName(getName?.name);
 
 		setFormData({
 			...formData,
 			charityId: value,
-			name: getName.name,
+			name: getName?.name,
 		});
 	};
 

@@ -14,7 +14,6 @@ const authenicateUser = async (req, res) => {
 
 	if (user) {
 		bcrypt.compare(password, user.password, (err, result) => {
-			console.log(err, result);
 			if (!result) {
 				return res.status(401).json({ message: "Invalid Password" });
 			} else {

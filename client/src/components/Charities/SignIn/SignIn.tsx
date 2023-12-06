@@ -5,11 +5,16 @@ interface FormData {
 	password: string;
 }
 
+// interface ErrorData {
+// 	message: string;
+// }
+
 const SignIn = () => {
 	const [formData, setFormData] = useState<FormData>({
 		email: "",
 		password: "",
 	});
+	// const [errorMsg, setErrorMsg] = useState<ErrorData>("");
 
 	const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -36,6 +41,7 @@ const SignIn = () => {
 				setFormData(resJson);
 			} else {
 				console.log("error:", resJson);
+				// setErrorMsg(resJson.message);
 			}
 		} catch (error) {
 			console.log(error);
@@ -65,6 +71,7 @@ const SignIn = () => {
 				</label>
 				<button type="submit">Submit</button>
 			</form>
+			{/* <p>{errorMsg ? errorMsg : null}</p> */}
 		</>
 	);
 };
