@@ -8,13 +8,6 @@ interface FormData {
 	password: string;
 }
 
-type Value = "id" | "name";
-
-interface ValueProps {
-	name: Value;
-	id: Value;
-}
-
 const CharityForm = () => {
 	const [formData, setFormData] = useState<FormData>({
 		name: "",
@@ -75,6 +68,12 @@ const CharityForm = () => {
 		}
 	};
 
+	const options = charities.map(({ id, name }) => (
+		<option value={id} key={id}>
+			{name}
+		</option>
+	));
+
 	return (
 		<>
 			<form action="" onSubmit={handleSubmit}>
@@ -88,11 +87,7 @@ const CharityForm = () => {
 							<option value="" disabled>
 								Select a Charity
 							</option>
-							{charities.map(({ id, name }: ValueProps) => (
-								<option value={id} key={id}>
-									{name}
-								</option>
-							))}
+							{options}
 						</select>
 					</label>
 				</div>
