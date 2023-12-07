@@ -15,10 +15,5 @@
 	"license": "ISC",
 	"dependencies": {
 		"concurrently": "^8.2.2"
-	},
-	"devDependencies": {
-		"husky": "^8.0.0",
-		"is-ci": "^3.0.1",
-		"lint-staged": "^15.2.0"
 	}
 }
