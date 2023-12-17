@@ -24,7 +24,12 @@ const authenicateUser = async (req, res) => {
 
 				token = jwt.sign(loginData, jwtSecretKey);
 
-				res.status(200).json({ message: "success", token });
+				res.status(200).json({
+					name: user.name,
+					id: user.charityId,
+					message: "success",
+					token,
+				});
 			}
 		});
 	}
