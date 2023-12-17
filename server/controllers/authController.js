@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 const salt = bcrypt.genSaltSync(10);
-const hash = bcrypt.hashSync("B4c0//", salt);
 
 const jwtSecretKey = process.env.JWT_TOKEN;
 let token = "";
