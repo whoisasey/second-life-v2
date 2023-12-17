@@ -2,35 +2,35 @@ import { useState, useEffect } from "react";
 import CharityCard from "../CharityCard/CharityCard";
 
 type charitiesProps = {
-	charityId: string;
-	name: string;
-	email: string;
+  charityId: string;
+  name: string;
+  email: string;
 };
 
 const Charities = () => {
-	const [result, setResult] = useState<charitiesProps[]>([]);
+  const [result, setResult] = useState<charitiesProps[]>([]);
 
-	const api = `${import.meta.env.VITE_VERCEL_API}/api/users`;
+  const api = `${import.meta.env.VITE_VERCEL_API}/users`;
 
-	useEffect(() => {
-		const getApi = async () => {
-			const data = await fetch(api, {
-				method: "GET",
-			});
+  useEffect(() => {
+    const getApi = async () => {
+      const data = await fetch(api, {
+        method: "GET",
+      });
 
-			const res = await data.json();
-			setResult(res);
-		};
-		getApi();
-	}, [result, api]);
+      const res = await data.json();
+      setResult(res);
+    };
+    getApi();
+  }, [result, api]);
 
-	return (
-		<>
-			{result.map((item, i) => (
-				<CharityCard {...item} key={i} />
-			))}
-		</>
-	);
+  return (
+    <>
+      {result.map((item, i) => (
+        <CharityCard {...item} key={i} />
+      ))}
+    </>
+  );
 };
 
 export default Charities;
