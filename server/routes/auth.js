@@ -1,13 +1,17 @@
 const express = require("express");
 
-const { authenicateUser } = require("../controllers/authController");
+const {
+	authenicateUser,
+	verifyUser,
+	checkUserAcc,
+} = require("../controllers/authController");
 
 const router = express.Router();
 
 router.post("/auth", authenicateUser);
 
-// router.post("/verify", "");
+router.post("/verify", verifyUser);
 
-// router.post("/check-account", "");
+router.post("/check-account", checkUserAcc);
 
 module.exports = router;
