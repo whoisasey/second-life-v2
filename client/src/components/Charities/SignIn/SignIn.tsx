@@ -1,5 +1,8 @@
-import { useState, ChangeEvent, FormEvent, useEffect } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserStateContext } from "../../../context/UserStateContext";
+
 interface FormData {
   email: string;
   password: string;
@@ -7,34 +10,39 @@ interface FormData {
 
 type PropsType = {
   setUser: React.Dispatch<React.SetStateAction<string>>;
-  setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 };
 // interface ErrorData {
 // 	message: string;
 // }
 
-const SignIn = ({ setUser, setLoggedIn }: PropsType) => {
+const SignIn = ({ setUser }: PropsType) => {
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
   });
   // const [errorMsg, setErrorMsg] = useState<ErrorData>({ message: "" });
+  const { setLoggedIn } = useContext(UserStateContext);
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user") || "{}");
+  // useEffect(() => {
+  // 	const user = JSON.parse(localStorage.getItem("user") || "{}");
 
-    // If the token/email does not exist, mark the user as logged out
-    if (!user || !user.token) {
-      setLoggedIn(false);
-      return;
-    }
+  // 	console.log(user);
 
-    if (user.token !== undefined) {
-      navigate(`/charities/admin/${user.id}`);
-    }
-  }, []);
+  // // If the token/email does not exist, mark the user as logged out
+  // if (!user || !user.token) {
+  // 	setLoggedIn(false);
+  // 	return;
+  // }
+
+  // if (user) {
+  // 	setLoggedIn(true);
+  // }
+  // if (user.token !== undefined) {
+  //   navigate(`/charities/admin/${user.id}`);
+  // }
+  // }, []);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -70,7 +78,7 @@ const SignIn = ({ setUser, setLoggedIn }: PropsType) => {
             ),
               setLoggedIn(true),
               setUser(r.name);
-            console.log(r);
+            // console.log(r);
 
             navigate(`/charities/admin/${r.id}`);
           }
