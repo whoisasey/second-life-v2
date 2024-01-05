@@ -1,23 +1,25 @@
 import { NavLink } from "react-router-dom";
-import styled from "./Nav.module.scss";
-import { useEffect } from "react";
-import { useContext } from "react";
+import { useEffect, useContext } from "react";
 import { UserStateContext } from "../../context/UserStateContext";
+import styled from "./Nav.module.scss";
 
 const Nav = () => {
-  // const [token, setToken] = useState<string>();
-  const { setLoggedIn } = useContext(UserStateContext);
+  const { setLoggedIn, user, loggedIn, setUser } = useContext(UserStateContext);
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user") || "{}");
-    console.log(user);
+    const getToken = async () => {
+      const userToken = await JSON.parse(localStorage.getItem("user")!);
 
-    if (user.token) {
-      setLoggedIn(true);
-      // setToken(user.id);
-    }
-    // console.log(token);
-  }, []);
+      if (userToken.token) {
+        setLoggedIn(true);
+        setUser({ id: userToken.id, name: userToken.name });
+      }
+    };
+
+    getToken();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, loggedIn]);
 
   return (
     <nav className={styled.nav}>
@@ -25,13 +27,13 @@ const Nav = () => {
 
       <div className={styled.menu}>
         <NavLink to="/charities">Charities</NavLink>
-        {/* {loggedIn ? (
-					<NavLink to={`/charities/admin/${token}`}>
-						Go to My Charity Page
-					</NavLink>
-				) : ( */}
-        <NavLink to="/charities/login">Register as a Charity</NavLink>
-        {/* )} */}
+        {loggedIn ? (
+          <NavLink to={`/charities/admin/${user?.id}`}>
+            Go to My Charity Page
+          </NavLink>
+        ) : (
+          <NavLink to="/charities/login">Register as a Charity</NavLink>
+        )}
       </div>
     </nav>
   );

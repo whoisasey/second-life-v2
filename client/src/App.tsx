@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { UserStateProvider } from "./context/UserStateContext";
 import { Layout } from "./components/Layout/Layout";
@@ -11,8 +10,6 @@ import {
 import Blurb from "./utils/Blurb";
 
 function App() {
-  const [user, setUser] = useState<string>("");
-
   return (
     <UserStateProvider>
       <Layout>
@@ -21,14 +18,8 @@ function App() {
             <Route path="/" element={<Blurb />} />
             <Route path="/charities" element={<Charities />} />
             <Route path="/charities/login" element={<LoginOrCreate />} />
-            <Route
-              path="/charities/signin"
-              element={<SignIn setUser={setUser} />}
-            />
-            <Route
-              path="/charities/admin/:id"
-              element={<CharityAdmin user={user} />}
-            />
+            <Route path="/charities/signin" element={<SignIn />} />
+            <Route path="/charities/admin/:id" element={<CharityAdmin />} />
           </Routes>
         </main>
       </Layout>

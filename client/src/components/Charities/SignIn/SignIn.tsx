@@ -1,6 +1,5 @@
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import { UserStateContext } from "../../../context/UserStateContext";
 
 interface FormData {
@@ -8,14 +7,7 @@ interface FormData {
   password: string;
 }
 
-type PropsType = {
-  setUser: React.Dispatch<React.SetStateAction<string>>;
-};
-// interface ErrorData {
-// 	message: string;
-// }
-
-const SignIn = ({ setUser }: PropsType) => {
+const SignIn = () => {
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
@@ -25,24 +17,23 @@ const SignIn = ({ setUser }: PropsType) => {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  // 	const user = JSON.parse(localStorage.getItem("user") || "{}");
-
-  // 	console.log(user);
-
-  // // If the token/email does not exist, mark the user as logged out
-  // if (!user || !user.token) {
-  // 	setLoggedIn(false);
-  // 	return;
-  // }
-
-  // if (user) {
-  // 	setLoggedIn(true);
-  // }
-  // if (user.token !== undefined) {
-  //   navigate(`/charities/admin/${user.id}`);
-  // }
-  // }, []);
+  useEffect(() => {
+    // const getUserCookie = JSON.parse(localStorage.getItem("user") || "{}");
+    // console.log(getUserCookie);
+    // 	const user = JSON.parse(localStorage.getItem("user") || "{}");
+    // 	console.log(user);
+    // // If the token/email does not exist, mark the user as logged out
+    // if (!user || !user.token) {
+    // 	setLoggedIn(false);
+    // 	return;
+    // }
+    // if (user) {
+    // 	setLoggedIn(true);
+    // }
+    // if (user.token !== undefined) {
+    //   navigate(`/charities/admin/${user.id}`);
+    // }
+  }, []);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -72,15 +63,16 @@ const SignIn = ({ setUser }: PropsType) => {
               "user",
               JSON.stringify({
                 id: r.id,
+                name: r.name,
                 email: formData.email,
                 token: r.token,
               }),
             ),
               setLoggedIn(true),
-              setUser(r.name);
-            // console.log(r);
+              // setUser(r.name);
+              // console.log(r);
 
-            navigate(`/charities/admin/${r.id}`);
+              navigate(`/charities/admin/${r.id}`);
           }
         });
     } catch (error) {
