@@ -19,9 +19,12 @@
     "@sanity/vision": "^3.25.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1",
     "react-is": "^18.2.0",
     "sanity": "^3.25.0",
+    "sanity-plugin-icon-picker": "^3.3.0",
     "sanity-plugin-prefixed-slug": "^2.0.0",
+    "sanity-plugin-visual-options": "^2.0.2",
     "styled-components": "^6.0.7"
   },
   "devDependencies": {
