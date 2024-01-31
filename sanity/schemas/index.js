@@ -7,6 +7,7 @@ import content from './slices/content'
 import twoColumnCopy from './slices/twoColumnCopy'
 
 // pages
+import home from './home'
 import page from './page'
 
 export const schemaTypes = [
@@ -19,5 +20,6 @@ export const schemaTypes = [
   twoColumnCopy,
 
   // pages
+  home,
   page,
 ]
